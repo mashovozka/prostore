@@ -1,18 +1,18 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { getProductBySlug } from "@/lib/actions/product.actions";
-import { notFound } from "next/navigation";
-import ProductPrice from "@/components/shared/product/product-price";
-import ProductImages from "@/components/shared/product/product-images";
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { getProductBySlug } from '@/lib/actions/product.actions'
+import { notFound } from 'next/navigation'
+import ProductPrice from '@/components/shared/product/product-price'
+import ProductImages from '@/components/shared/product/product-images'
 
 const ProductDetailsPage = async (props: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>
 }) => {
-  const { slug } = await props.params;
+  const { slug } = await props.params
 
-  const product = await getProductBySlug(slug);
-  if (!product) notFound();
+  const product = await getProductBySlug(slug)
+  if (!product) notFound()
 
   return (
     <>
@@ -30,7 +30,8 @@ const ProductDetailsPage = async (props: {
               </p>
               <h1 className="h3-bold">{product.name}</h1>
               <p>
-                {product.rating} of {product.numReviews} Reviews
+                {product.rating?.toString()} of {product.numReviews?.toString()}{' '}
+                Reviews
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <ProductPrice
@@ -73,7 +74,7 @@ const ProductDetailsPage = async (props: {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default ProductDetailsPage;
+export default ProductDetailsPage
