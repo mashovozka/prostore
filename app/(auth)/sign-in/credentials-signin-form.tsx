@@ -1,45 +1,43 @@
-"use client";
+'use client'
 
-import { signInDefaultValues } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
-import { CardContent, CardFooter } from "@/components/ui/card";
-import { signInWithCredentials } from "@/lib/actions/user.action";
-import { useFormStatus } from "react-dom";
-import { useActionState } from "react";
-import { useSearchParams } from "next/navigation";
+import { signInDefaultValues } from '@/lib/constants'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import Link from 'next/link'
+import { CardContent, CardFooter } from '@/components/ui/card'
+import { signInWithCredentials } from '@/lib/actions/user.action'
+import { useFormStatus } from 'react-dom'
+import { useActionState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 const SignInButton = () => {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
   return (
     <Button
       disabled={pending}
       type="submit"
       className="w-full bg-black text-white hover:bg-black/80 h-10"
     >
-      {pending ? "Signing In" : "Sign In"}
+      {pending ? 'Signing In' : 'Sign In'}
     </Button>
-  );
-};
+  )
+}
 
 const CredentialsSignInForm = () => {
   const [data, action] = useActionState(signInWithCredentials, {
     success: false,
-    message: "",
-  });
+    message: '',
+  })
 
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || '/'
-
-
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/'
 
   return (
     <>
-      <CardContent             className="space-y-4">
+      <CardContent className="space-y-4">
         <form action={action}>
-        <input type="hidden" name='callbackUrl' value={callbackUrl} />
+          <input type="hidden" name="callbackUrl" value={callbackUrl} />
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -73,7 +71,7 @@ const CredentialsSignInForm = () => {
             )}
 
             <div className="text-sm text-center text-muted-foreground">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?{' '}
               <Link href="/sign-up" target="_self" className="link">
                 Sign Up
               </Link>
@@ -82,7 +80,7 @@ const CredentialsSignInForm = () => {
         </form>
       </CardContent>
     </>
-  );
-};
+  )
+}
 
-export default CredentialsSignInForm;
+export default CredentialsSignInForm
