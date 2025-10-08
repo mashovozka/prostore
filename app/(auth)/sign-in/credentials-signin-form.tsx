@@ -9,6 +9,7 @@ import { CardContent, CardFooter } from "@/components/ui/card";
 import { signInWithCredentials } from "@/lib/actions/user.action";
 import { useFormStatus } from "react-dom";
 import { useActionState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const SignInButton = () => {
   const { pending } = useFormStatus();
@@ -29,10 +30,16 @@ const CredentialsSignInForm = () => {
     message: "",
   });
 
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || '/'
+
+
+
   return (
     <>
-      <CardContent className="space-y-4">
+      <CardContent             className="space-y-4">
         <form action={action}>
+        <input type="hidden" name='callbackUrl' value={callbackUrl} />
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
