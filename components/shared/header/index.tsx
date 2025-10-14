@@ -1,14 +1,14 @@
-import { ShoppingCart, UserIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { APP_NAME } from "@/lib/constants";
-import ModeToggle from "./mode-toggle";
-import Menu from "./menu";
+import { ShoppingCart, UserIcon } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { APP_NAME } from '@/lib/constants'
+import ModeToggle from './mode-toggle'
+import Menu from './menu'
 
 const Header = () => {
   return (
-    <header className="w-full border-b">
+    <header className="w-full border-b px-5 py-3">
       <div className="flex flex-row justify-between">
         <div className="flex-start">
           <Link href="/" className="flex-start">
@@ -27,7 +27,7 @@ const Header = () => {
         <Menu />
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,12 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import ProductPrice from "./product-price";
-import { Product } from "@/types";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import ProductPrice from './product-price'
+import { Product } from '@/types'
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-full max-w-sm overflow-hidden">
       <CardHeader className="p-0 items-center">
         <Link href={`/product/${product.slug}`}>
           <Image
@@ -33,7 +33,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard
